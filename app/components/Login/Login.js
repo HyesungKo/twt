@@ -64,7 +64,7 @@ class Login extends Component {
                         borderWidth: 0,
                         borderRadius: 5
                     }}
-                    containerStyle={{ marginTop: 20 }}
+                    containerStyle={{ marginTop: 30 }}
                     onPress={this.login}
                 />
                 <Button

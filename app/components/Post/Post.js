@@ -3,7 +3,6 @@ import { View, Picker, ScrollView } from 'react-native';
 import firebase from 'firebase';
 import { Input, Text, Button } from 'react-native-elements';
 import { postGuide } from '../../Data/Data';
-import { RNCamera } from 'react-native-camera'
 
 class Post extends Component {
   constructor(props) {
@@ -29,13 +28,7 @@ class Post extends Component {
       this.setState({userName: snapshot.val().userName})
     })
   }
-  
-  takePicture = async function(camera) {
-    const options = { quality: 0.5, base64: true };
-    const data = await camera.takePictureAsync(options);
-    //  eslint-disable-next-line
-    console.log(data.uri);
-  }
+
 
   post() {
     postGuide(this.state)
@@ -45,19 +38,7 @@ class Post extends Component {
   render() {
     return (
       <View style={{flex: 1, flexDirection: "column", padding: 10}}>
-        <RNCamera
-            ref={ref => {
-              this.camera = ref;
-            }}
-            aspect={RNCamera.Constants.aspect.fill}
-            style = {styles.preview}
-            type={RNCamera.Constants.Type.back}
-            flashMode={RNCamera.Constants.FlashMode.on}
-            permissionDialogTitle={'Permission to use camera'}
-            permissionDialogMessage={'We need your permission to use your camera phone'}
-        />
         <ScrollView>
-          
           <Input
             placeholder="Title"
             value={this.state.title}

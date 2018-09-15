@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator, ScrollView } from 'react-native';
-import { SearchBar, ListItem, Button } from 'react-native-elements';
+import { ListItem, Button, SearchBar } from 'react-native-elements';
 import { getGuide } from '../../Data/Data';
+import { Ionicons } from '@expo/vector-icons';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.retrieveGuides = this.retrieveGuides.bind(this);
+    this.filterByLocation = this.filterByLocation.bind(this);
     this.state = {
       loading: true,
-      guides: []
+      guides: [],
+      location: ''
     };
   }
 
@@ -28,7 +31,10 @@ class Search extends Component {
     this.setState({
       loading: false
     })
+  }
 
+  filterByLocation(text) {
+    this.setState({location: text});
   }
 
   render() {
@@ -43,8 +49,13 @@ class Search extends Component {
     return (
       <ScrollView>
         <SearchBar
-          placeholder="Search"
-        />
+          lightTheme
+          searchIcon={<Ionicons
+                style={{width: 25, textAlign: "center"}} name="md-search" size={25} color="red"
+            />}
+          onChangeText={(text) => this.filterByLocation(text)}
+          // onClear={someMethod}
+          placeholder='Location' />
         <Button
           title="refresh"
           onPress={this.retrieveGuides}

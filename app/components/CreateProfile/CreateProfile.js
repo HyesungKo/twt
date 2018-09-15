@@ -25,14 +25,14 @@ class CreateProfile extends Component {
         <View style={styles.loginContainer}>
           <Text style={{fontSize: 20}}> User Name? </Text>
           <TextInput style = {styles.input} 
-          autoCapitalize="none" 
-          autoCorrect={false} 
-          keyboardType='email-address' 
-          returnKeyType="go" 
-          placeholder='User Name'
-          value={this.state.userName}
-          onChangeText={(text) => this.setState({userName: text})}
-          placeholderTextColor='rgba(225,225,225,0.7)' />
+            autoCapitalize="none" 
+            autoCorrect={false} 
+            keyboardType='email-address' 
+            returnKeyType="go" 
+            placeholder='User Name'
+            value={this.state.userName}
+            onChangeText={(text) => this.setState({userName: text})}
+            placeholderTextColor='rgba(225,225,225,0.7)' />
           {this.state.userName &&
             <Button onPress={this.completeProfile} title="Done!" />
           }
